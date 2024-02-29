@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Page</title>
+  <!-- Include Vue.js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  
+  <style>
+    /* Style for background color */
+    html, 
+    body {
+        margin: 0;
+        padding: 0;
+        background-color:#ffffff;
+    }
+
+    /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #5b9d83;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    footer ul li {
+      display: inline;
+      margin-right: 120px;
+    }
+    footer ul li a {
+      color: rgb(247, 243, 243);
+      text-decoration: none;
+    }
+
+    /* Style for centering the main title */
+    .main-title-container {
+      text-align: center;
+      margin-bottom: 10px; /* Add some space below the main title */
+    }
+
+    .main-title {
+      display: inline-block;
+      width: 80%;
+      background-color: #904c9c; /* Pink color for the title box */
+      color: white;
+      padding: 10px 0px; /* Add padding */
+      margin-top: 0px;
+      border-radius: 20px; /* Rounded corners */
+      font-size: 25px; /* Larger font size */
+    }
+
+    /* Style for exhibition section */
+    .exhibition-section {
+      background-color: #efefef; /* Light gray background color */
+      padding: 20px; /* Add padding */
+      border-radius: 10px; /* Rounded corners */
+      margin: 15px; /* Add some space around the exhibition section */
+    }
+
+    /* Style for event section */
+    .event-section {
+      background-color: #e5aff0; /* Light gray background color */
+      padding: 20px; /* Add padding */
+      border-radius: 10px; /* Rounded corners */
+      margin: 20px; /* Add some space around the event section */
+    }
+
+    /* Style for event list */
+    .event-list {
+      list-style-type: none; /* Remove bullet points */
+      padding: 0; /* Remove default padding */
+    }
+
+    /* Style for individual event item */
+    .event-item {
+      margin-bottom: 20px; /* Add space between event items */
+    }
+
+    /* Style for footer links | NEED TO EDIT SPACING/POSITION */
+    footer a { 
+      position: absolute;
+      color: white;
+      text-decoration: none;
+      /*font-weight: ;  Bold font for footer links */
+      font-size: 16px; /* Font size for footer links */
+    }
+
+    /* Style for map button */
+    #map-button {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Adjust to the right */
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    background-image: url('https://visualpharm.com/assets/917/Waypoint%20Map-595b40b75ba036ed117d6dd4.svg'); /* Replace 'map-icon.png' with your map image */
+    background-size: cover; /* Make sure the background image covers the button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor */
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Main Content -->
+  <main>
+    <section class="exhibition-section">
+      <div class="main-title-container">
+        <h2 class="main-title">Glazer Children's Museum</h2>
+      </div>
+      <div v-if="currentExhibition">
+        <h3>{{ currentExhibition.title }}</h3>
+        <p>{{ currentExhibition.description }}</p>
+      </div>
+      <div v-else>
+        <p>No current exhibition at the moment.</p>
+      </div>
+    </section>
+
+    <section class="event-section">
+      <h2>Upcoming Events</h2>
+      <ul class="event-list">
+        <li v-for="event in upcomingEvents" :key="event.id" class="event-item">
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.date }}</p>
+          <p>{{ event.description }}</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">    <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="16px" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z"/></svg>  Home    </a></li>
+      <li><a href="#">    Exhibits   </a></li>
+      <li><a href="#">    Science of Play    </a></li>
+      <li><a href="#">    About Us   </a></li>
+    </ul>
+  </footer>
+  
+  <!-- Map Button -->
+  <button id="map-button">   </button>
+  <!-- <button id="map-button">Map</button> -->
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    currentExhibition: {
+      title: 'Glazer Children\'s Musuem',
+      description: 'Explore the wonders of child led play.'
+    },
+    upcomingEvents: [
+      {
+        id: 1,
+        title: 'Learning how to code this',
+        date: 'Hopefully by May 2024',
+        description: 'Join me in trying my best to learn all of this.'
+      },
+      {
+        id: 2,
+        title: 'Trying to style it',
+        date: 'Hopefully by May 2024',
+        description: 'Hopefully will be beautiful'
+      }
+    ]
+  }
+});
+</script>
+
+</body>
+</html>
