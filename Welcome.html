@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Page</title>
+  <!-- Include Vue.js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  
+  <style>
+
+    /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      text-align: center;
+      padding: 10px;
+      z-index: 2;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      display: inline;
+      margin-right: 180px;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px; /* Font size for buttons */
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      font-size: 16px; /* Font size for footer links */
+      font-family: Vag;
+    }
+    
+    /* Style for title box */
+    .title-box {
+      background-color: #874791; /* Purple background color */
+      padding: 5px; /* Add padding to create space around the title */
+      margin-left: 200px;
+      margin-right: 200px;
+      margin-top: 20px;
+      height: 50px;
+      z-index: 1; /* Increase z-index to ensure it's above other elements */
+      border-radius: 30px; /* Round the corners */
+      display: flex; /* Use flexbox */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+    }
+    
+    /* Style for Glazier Children's Museum  title */
+    .title-box .welcome-title h1 {
+    margin: 0; /* Remove all margins */
+    text-align: center;
+    font-size: 36px; /* Adjust the font size as needed */
+    font-family: Vag;
+    color: white; /* Set color to white */
+    }
+
+    .section {
+      background-color: white; /* White background color */
+      margin: 25px; /* Add some margin */
+      padding: 20px; /* Add padding */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+      text-align: center; /* Center align the content */
+    }
+
+    .section h2 {
+      color: #874791; /* Purple color for section titles */
+      font-size: 26px; /* Adjust font size */
+      margin-bottom: 25px; /* Add margin */
+      margin-top: 0px;
+      font-family: Vag;
+    }
+
+    .content {
+      display: flex; /* Use flexbox */
+      align-items: center; /* Center items horizontally */
+    }
+
+    .image {
+      margin-right: 20px; /* Add margin */
+    }
+
+    .image img {
+        max-width: 100%; /* Ensure image doesn't exceed container width */
+        max-height: 300px; /* Set maximum height to 300 pixels */
+    }
+
+    /* Style for descriptions within sections */
+    .description {
+      flex: 1; /* Let description take remaining space */
+      margin-top: 0px; /* Add margin to push the text closer to the top */
+      font-family: Vag;
+    }
+
+    /* Style for paragraphs within descriptions */
+    .description p {
+      margin-bottom: 10px; /* Add margin between paragraphs */
+      font-family: Vag;
+    }
+
+    /* Style for centering the second image and description */
+    .centered-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+  /* Change background color to pink on scroll */
+  .pink-background {
+    margin: 0;
+    padding: 0;
+    background-color: #f691b2 !important; /* Pink background color */
+  }
+
+  /* Style for map button */
+  #map-button {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Adjust to the right */
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    background-image: url('https://visualpharm.com/assets/917/Waypoint%20Map-595b40b75ba036ed117d6dd4.svg'); /* Replace 'map-icon.png' with your map image */
+    background-size: cover; /* Make sure the background image covers the button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor */
+    }
+
+
+  html {
+    margin: 0;
+    padding: 0;
+    background-color: #7fc0f1; /* Set initial background color */
+    }
+
+  </style>
+</head>
+
+<script>
+    // Add scroll event listener to change background color
+    window.addEventListener('scroll', function() {
+      const htmlElement = document.documentElement;
+      if (window.scrollY > 500) {
+        htmlElement.classList.add('pink-background'); // Add class to change background color to pink
+      } else {
+        htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+      }
+    });
+</script>
+
+<body>
+
+    <div id="app">
+        <div class="title-box">
+            <div class="welcome-title">
+                <h1>Glazier Children's Museum</h1>
+            </div>
+        </div>
+    
+        <div class="section">
+            <h2>Who Are We?</h2>
+            <div class="content">
+                <div class="image">
+                    <img src="https://assets.simpleviewinc.com/simpleview/image/fetch/q_75/https://assets.simpleviewinc.com/simpleview/image/upload/crm/tampabay/Exterior-3--15ede2385056a36_15f14d9c-5056-a36a-08544a40a6d2276e.jpg" alt="Who Are We Image">
+                </div>
+                <div class="description">
+                    <p>Here at Glazier Children’s Museum, we want to build a community that values PLAY as the foundation for the learning and development of children and families across generations!</p>
+                    <p>Allowing your child to choose how they want to play leads to higher engagement and ultimately more fun!</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="section">
+            <h2>Why Is Child Development Important?</h2>
+            <div class="content centered-content"> <!-- Apply the custom class to center the content -->
+                <div class="image">
+                    <img src="https://i.pinimg.com/736x/21/21/2f/21212fd23ad5891a86b6caa4c69fa945.jpg" alt="Whole Child Image">
+                </div>
+                <div class="description">
+                    <p>There are 5 domains involved regarding children development. The exhibits here at Glazier Children’s Museum are dedicated to focus and enhance these different domains!</p>
+                    <p>1. Physical - "Motor skills allow children to make purposeful movements and learn the physical characteristics of self and the environment."</p>
+                    <p>2. Social/Emotional - "Emotional development includes the ability to identify and understand one's own feelings, to accurately read and comprehend emotions in others, to manage strong emotions and their expressions, to control one's own behavior, to develop empathy for others, and to establish and maintain relationships."</p>
+                    <p>3. Sensory - "The ability to recognize and interpret sensory stimuli serves as the basis for understanding, learning, and knowing a particular action or reaction, which plays a major role in the physical, social-emotional, communication, and cognitive development of a child. "</p>
+                    <p>4. Cognitive - "Cognition also involves the mental activities of comprehending information and the processes or acquiring, organizing, remembering, and using for problem solving and generalization to novel situations."</p>
+                    <p>5. Communication - "Communication helps children learn to understand or comprehend their wants and needs."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Why Is Child Led Play Important?</h2>
+            <div class="content">
+                <div class="image">
+                    <img src="https://scchildren.org/wp-content/uploads/Group-of-kids-playing-collage-02-800x0-c-default.jpg" alt="Who Are We Image">
+                </div>
+                <div class="description">
+                    <p>jusible kamndi kdop kidm lusnd kdjw.</p>
+                    <p>la la la so important</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Map Button -->
+    <button id="map-button">   </button>
+    <!-- <button id="map-button">Map</button> -->
+    </div>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">    <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="16px" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1" viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z"/></svg>  Home    </a></li>
+      <li><a href="#">    Exhibits   </a></li>
+      <li><a href="#">    Science of Play    </a></li>
+      <li><a href="#">    About Us   </a></li>
+    </ul>
+  </footer>
+  
+  <!-- Map Button -->
+  <button id="map-button">   </button>
+  <!-- <button id="map-button">Map</button> -->
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  }
+);
+</script>
+
+</body>
+</html>
