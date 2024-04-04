@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Page</title>
+  <!-- Include Vue.js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<style>
+        /* Style for title box */
+    .title-box {
+    background-color: #874791; /* Purple background color */
+    padding: 5px; /* Add padding to create space around the title */
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 5px;
+    margin-bottom: 45px;
+    height: 50px;
+    z-index: 1; /* Increase z-index to ensure it's above other elements */
+    border-radius: 30px; /* Round the corners */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+    border: 2px solid white; /* Adjust the width as needed */
+    }
+
+    /* Style for Glazier Children's Museum title */
+    .title-box .welcome-title h1 {
+    margin: 0; /* Remove all margins */
+    text-align: center;
+    font-size: 36px; /* Adjust the font size as needed */
+    font-family: Vag;
+    color: white; /* Set color to white */
+    }
+
+    .section {
+    background-color: white; /* White background color */
+    margin-top: 35px; /* Add some margin */
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add shadow */
+    }
+
+    .section h2 {
+    color: #874791; /* Purple color for section titles */
+    font-size: 26px; /* Adjust font size */
+    margin-bottom: 15px; /* Add margin */
+    margin-top: 0px;
+    font-family: Vag;
+    }
+
+    .content {
+    display: flex;
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    }
+
+    /* Style for centering the second image*/
+    .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+    
+
+    .image {
+    margin-right: 20px;
+    }
+
+    .image img {
+    max-width: 500px;
+    max-height: 200px;
+    }
+
+    .description {
+    flex: 1;
+    font-family: Vag;
+    }
+
+    .description p {
+    margin-bottom: 10px;
+    font-family: Vag;
+    text-align: left;
+    }
+
+    .play-types {
+        display: flex;
+    }
+
+    .play-type {
+        margin: 0 5px; /* Adjust spacing between words */
+    }
+
+    /* Define colors for each play type */
+    .play-type.physical {
+        color: rgb(250, 108, 165);
+    }
+
+    .play-type.socialEmotional {
+        color: rgb(240, 148, 62);
+    }
+
+    .play-type.sensory {
+        color: rgb(41, 172, 74);
+    }
+
+    .play-type.cognitive {
+        color: rgb(102, 208, 241);
+    }
+
+    .play-type.communication {
+        color: rgb(192, 106, 245);
+    }
+
+    /* Style for circles */
+    .circle {
+    position: fixed;
+    width: 350px;
+    height: 400px;
+    border-radius: 100%;
+    }
+
+    /* Left circle */
+    .left-circle1 {
+    left: -220px;
+    top: -200px;
+    z-index: -2;
+    background-color: #874791;
+    }
+
+    /* Right circle */
+    .right-circle1 {
+    right: -220px;
+    top: -200px;
+    z-index: -2;
+    background-color: #874791;
+    }
+
+    /* Left circle */
+    .left-circle2 {
+    left: -125px;
+    top: -220px;
+    z-index: -3;
+    background-color: #f86fac;
+    }
+
+    /* Right circle */
+    .right-circle2 {
+    right: -125px;
+    top: -220px;
+    z-index: -3;
+    background-color: #f86fac;
+    }
+
+    /* Left circle */
+    .left-circle3 {
+    left: -230px;
+    top: -90px;
+    z-index: -3;
+    background-color: #B6E565;
+    }
+
+    /* Right circle */
+    .right-circle3 {
+    right: -230px;
+    top: -90px;
+    z-index: -3;
+    background-color: #B6E565;
+    }
+
+    /* Style for map button */
+    #map-button {
+        position: absolute;
+        top: 20px;
+        right: 20px; /* Adjust to the right */
+        width: 50px; /* Adjust width */
+        height: 50px; /* Adjust height */
+        background-image: url('https://visualpharm.com/assets/917/Waypoint%20Map-595b40b75ba036ed117d6dd4.svg'); /* Replace 'map-icon.png' with your map image */
+        background-size: cover; /* Make sure the background image covers the button */
+        border: none; /* Remove border */
+        cursor: pointer; /* Add pointer cursor */
+    }
+
+    /* Change background color to pink on scroll */
+    .pink-background {
+        margin: 0;
+        padding: 0;
+        background-color: #f691b2 !important; /* Pink background color */
+    }
+
+    html {
+    margin: 0;
+    padding: 0;
+    background-color: #7fc0f1; /* Set initial background color */
+    }
+</style>
+
+<script>
+    // Add scroll event listener to change background color
+    window.addEventListener('scroll', function() {
+      const htmlElement = document.documentElement;
+      if (window.scrollY > 500) {
+        htmlElement.classList.add('pink-background'); // Add class to change background color to pink
+      } else {
+        htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+      }
+    });
+</script>
+  
+<body>
+  <div class="title-box">
+    <div class="welcome-title">
+      <h1>Glazer Children's Museum</h1>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Who Are We?</h2>
+    <div class="content">
+      <div class="image">
+        <img src="{% static 'images/GCM_Pic.jpg' %}" alt="Who Are We Image">
+      </div>
+      <div class="description">
+        <p>Here at Glazer Children’s Museum, we want to build a community that values PLAY as the foundation for the learning and development of children and families across generations!</p>
+        <p>Allowing your child to choose how they want to play leads to higher engagement and ultimately more fun!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Why Is Child Development Important?</h2>
+    <div class="content centered-content">
+      <div class="image">
+        <img src="{% static 'images/WholeChild.jpg' %}" alt="Whole Child Image">
+      </div>
+      <div class="description">
+        <p>There are 5 domains involved regarding children development. The exhibits here at Glazier Children’s Museum are dedicated to focus and enhance these different domains!</p>
+        <p class="play-type physical">1. Physical - "Motor skills allow children to make purposeful movements and learn the physical characteristics of self and the environment."</p>
+        <p class="play-type socialEmotional">2. Social/Emotional - "Emotional development includes the ability to identify and understand one's own feelings, to accurately read and comprehend emotions in others, to manage strong emotions and their expressions, to control one's own behavior, to develop empathy for others, and to establish and maintain relationships."</p>
+        <p class="play-type sensory">3. Sensory - "The ability to recognize and interpret sensory stimuli serves as the basis for understanding, learning, and knowing a particular action or reaction, which plays a major role in the physical, social-emotional, communication, and cognitive development of a child. "</p>
+        <p class="play-type cognitive">4. Cognitive - "Cognition also involves the mental activities of comprehending information and the processes or acquiring, organizing, remembering, and using for problem solving and generalization to novel situations."</p>
+        <p class="play-type communication">5. Communication - "Communication helps children learn to understand or comprehend their wants and needs."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Why Is Child Led Play Important?</h2>
+    <div class="content">
+      <div class="image">
+        <img src="{% static 'images/childrenHappy.jpg' %}" alt="Who Are We Image">
+      </div>
+      <div class="description">
+        <p>jusible kamndi kdop kidm lusnd kdjw.</p>
+        <p>la la la so important</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Circles -->
+  <div class="circle left-circle1"></div>
+  <div class="circle right-circle1"></div>
+  <div class="circle left-circle2"></div>
+  <div class="circle right-circle2"></div>
+  <div class="circle left-circle3"></div>
+  <div class="circle right-circle3"></div>
+
+  <button id="map-button"></button>
+
+  <a href="{% url 'exhibits_page' %}">Exhibits</a>
+
+</body>
+</html>
+

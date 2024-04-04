@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Page</title>
+  <!-- Include Vue.js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  
+  <style>
+
+    /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      text-align: center;
+      padding: 10px;
+      z-index: 2;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      display: inline;
+      margin-right: 17.58%;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px; /* Font size for buttons */
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      font-size: 16px; /* Font size for footer links */
+      font-family: Vag;
+    }
+    
+    /* Style for title box */
+    .title-box {
+      background-color: #874791; /* Purple background color */
+      padding: 5px; /* Add padding to create space around the title */
+      margin-left: 29%;
+      margin-right: 29%;
+      margin-top: 30px;
+      height: 50px;
+      z-index: 1; /* Increase z-index to ensure it's above other elements */
+      border-radius: 30px; /* Round the corners */
+      display: flex; /* Use flexbox */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+      border: 2px solid white; /* Adjust the width as needed */
+    }
+    
+    /* Style for Glazier Children's Museum  title */
+    .title-box .welcome-title h1 {
+    margin: 0; /* Remove all margins */
+    text-align: center;
+    font-size: 36px; /* Adjust the font size as needed */
+    font-family: Vag;
+    color: white; /* Set color to white */
+    }
+
+    .section {
+      background-color: white; /* White background color */
+      margin-top: 30px; /* Add some margin */
+      margin-left: 5%;
+      margin-right: 5%;
+      padding: 20px; /* Add padding */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow */
+    }
+
+    .section h2 {
+      color: #874791; /* Purple color for section titles */
+      font-size: 26px; /* Adjust font size */
+      margin-bottom: 25px; /* Add margin */
+      margin-top: 0px;
+      font-family: Vag;
+    }
+
+    .content {
+    display: flex;
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    }
+
+    .image {
+    margin-right: 20px;
+    }
+
+    .image img {
+    width: 100%;
+    height: auto;
+    max-width: 300px; 
+    }
+
+    .description {
+    flex: 1;
+    min-width: 200px;
+    font-family: Vag;
+    }
+
+    .description p {
+    margin-bottom: 10px;
+    font-family: Vag;
+    }
+
+  /* Change background color to pink on scroll */
+    .green-background {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #7fc0f1, #B6E565); /* Blue to green gradient */
+  }
+
+    /* Change background color to green on scroll */
+    .yellow-background {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #B6E565, #f6f18f ); /* Pink background color */
+  }
+
+      /* Change background color to green on scroll */
+    .orange-background {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f6f18f, #f9c04e ); /* Pink background color */
+  }
+
+    /* Change background color to green on scroll */
+    .pink-background {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f9c04e, #f691b2 ); /* Pink background color */
+  }
+
+  /* Style for map button */
+  #map-button {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Adjust to the right */
+    width: 50px; /* Adjust width */
+    height: 50px; /* Adjust height */
+    background-image: url('https://visualpharm.com/assets/917/Waypoint%20Map-595b40b75ba036ed117d6dd4.svg'); /* Replace 'map-icon.png' with your map image */
+    background-size: cover; /* Make sure the background image covers the button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor */
+    }
+
+    /* Style for circles */
+.circle {
+  position: fixed;
+  width: 300px;
+  height: 350px;
+  border-radius: 100%;
+  border: 2px solid white; /* Adjust the width as needed */
+  }
+
+/* Left circle */
+.left-circle1 {
+  left: -220px;
+  top: -200px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+/* Right circle */
+.right-circle1 {
+  right: -220px;
+  top: -200px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+/* Left circle */
+.left-circle2 {
+  left: -125px;
+  top: -220px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+/* Right circle */
+.right-circle2 {
+  right: -125px;
+  top: -220px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+/* Left circle */
+.left-circle3 {
+  left: -230px;
+  top: -90px;
+  z-index: -3;
+  background-color: #B6E565;
+  }
+
+/* Right circle */
+.right-circle3 {
+    right: -230px;
+    top: -90px;
+    z-index: -3;
+    background-color: #B6E565;
+    }
+
+  html {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #7fc0f1, #B6E565 )
+    }
+
+  </style>
+</head>
+
+<script>
+    // Add scroll event listener to change background color
+    window.addEventListener('scroll', function() {
+        const htmlElement = document.documentElement;
+        if (window.scrollY > 1200 && window.scrollY < 2200) {
+            htmlElement.classList.add('yellow-background'); // Add class to change background color to yellow
+            htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+        } else if (window.scrollY > 2200 && window.scrollY < 3200) {
+            htmlElement.classList.add('orange-background'); // Add class to change background color to orange
+            htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+        } else if (window.scrollY > 3200) {
+            htmlElement.classList.add('pink-background'); // Add class to change background color to pink
+            htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+            htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+        } else {
+        htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+        htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+        htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+        htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+    }
+    });
+</script>
+
+<body>
+
+    <!-- Exhibits -->
+    {% for exhibit in exhibits %}
+    <div class="section">
+      <h2>{{ exhibit.title }}</h2>
+      <div class="content">
+        <div class="image">
+          <img src="{{ exhibit.image.url }}" alt="{{ exhibit.title }} Image">
+        </div>
+        <div class="description">
+          <p>{{ exhibit.description }}</p>
+          <!-- Add more details if needed -->
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+    <!-- Map Button -->
+    <button id="map-button">   </button>
+    <!-- <button id="map-button">Map</button> -->
+    </div>
+
+    <!-- Circles -->
+    <div class="circle left-circle1"></div>
+    <div class="circle right-circle1"></div>
+    <div class="circle left-circle2"></div>
+    <div class="circle right-circle2"></div>
+    <div class="circle left-circle3"></div>
+    <div class="circle right-circle3"></div>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="{% url 'main' %}">    Home    </a></li>
+      <li><a href="#">    Exhibits   </a></li>
+      <li><a href="#">    Science of Play    </a></li>
+      <li><a href="#">    About Us   </a></li>
+    </ul>
+  </footer>
+  
+  <!-- Map Button -->
+  <button id="map-button">   </button>
+  <!-- <button id="map-button">Map</button> -->
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  }
+);
+</script>
+
+</body>
+</html>
