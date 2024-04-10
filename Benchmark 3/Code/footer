@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <style>
+
+    /* Style for the empty div at the bottom */
+    .empty-div {
+        height: 150px;
+      }
+  /* Style for buttons on navigation bar */
+
+  .button-container {
+        text-align: center;
+    }
+    .button-container button {
+        background-color: #874791;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70px; /* Fixed width for the button */
+        height: 70px; /* Fixed height for the button */
+        overflow: hidden; /* Hide overflow if text exceeds button height */
+    }
+    .button-container button img {
+        
+        width: 35px; /* Fixed width for the image */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .button-container button span {
+        font-size: 11px; /* Adjust font size as needed */
+        margin-top: 5px;
+    }
+
+  /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: none;
+      padding-right: none;
+      z-index: 2;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 11px; /* Font size for footer links */
+      font-family: Vag;
+    }
+    .center-justified {
+      margin: 0 auto;
+      width: auto;
+      max-width: 50em;
+      min-width: 0;
+    }
+    .row{
+      display: flex;
+      justify-content: space-between;
+    }
+    </style>
+</head>
+<body>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <div class="center-justified">
+        <div class="row">
+        <!-- Home Button -->
+            <li><a href="#"><div class="button-container"><button>
+                <img src="images/icons/home.svg" alt="Home Button Icon">
+                <span>Home</span>
+            </button></div></a></li>
+
+        <!-- Exhibits Button -->
+          <li><a href="#"><div class="button-container"><button>
+              <img src="images/icons/exhibits.svg" alt="Exhibits Button Icon">
+              <span>Exhibits</span>
+          </button></div></a></li>
+
+        <!-- Science of Play Button -->
+        <li><a href="#"><div class="button-container"><button>
+            <img src="images/icons/science.svg" alt="Science of Play Button Icon">
+            <span>Science of Play</span>
+        </button></div></a></li>
+        
+        <!-- Map Button -->
+        <li><a href="#"><div class="button-container"><button>
+          <img src="images/icons/map.svg" alt="Map Button Icon">
+          <span>Map</span>
+        </button></div></a></li>
+
+        <!-- Outside Play Button -->
+        <li><a href="#"><div class="button-container"><button>
+            <img src="images/icons/playground.svg" alt="Playground Button Icon">
+            <span>Outside Play</span>
+        </button></div></a></li>
+
+
+        </div>
+      </div>
+    </ul>
+  </footer>
+  
+  <div class="empty-div"></div>
+
+</body>
+</html>
