@@ -1,0 +1,447 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum Page</title>
+  <!-- Include Vue.js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<style>
+  /* Style for the buttons */
+  .button-container {
+    text-align: center;
+  }
+  .button-container button {
+    background-color: #874791;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Fixed width for the button */
+    height: 60px; /* Fixed height for the button */
+    overflow: hidden; /* Hide overflow if text exceeds button height */
+  }
+  .button-container button img {
+    width: 35px; /* Fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .button-container button span {
+    font-size: 11px; /* Adjust font size as needed */
+    margin-top: 5px;
+  }
+
+  /* Style for bottom navigation bar */
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #874791; /* Purple background color */
+    color: white;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: none;
+    padding-right: none;
+    z-index: 2;
+  }
+
+  footer ul {
+    list-style-type: none;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Style for footer links */
+  footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 11px; /* Font size for footer links */
+    font-family: Vag;
+  }
+  .center-justified {
+    margin: 0 auto;
+    width: auto;
+    max-width: 50em;
+    min-width: 0;
+  }
+  .row{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Style for Glazier Children's Museum  title */
+  .welcome-title h1 {
+  margin: 0; /* Remove all margins */
+  text-align: center;
+  font-size: 40px; /* Adjust the font size as needed */
+  font-family: Vag;
+  color: #874791; /* Set color to white */
+  margin-top: 2%;
+  text-shadow: 2px 2px 2px white; /* Add white shadow effect */
+  }
+
+  /* Style for white sections */
+  .section {
+  background-color: white; /* White background color */
+  margin-top: 50px; /* Add some margin */
+  margin-bottom:65px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 20px; /* Add padding */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow */
+  }
+
+  /* Style for section titles */
+  .section h2 {
+  color: #874791; /* Purple color for section titles */
+  font-size: 26px; /* Adjust font size */
+  margin-bottom: 10px; /* Add margin */
+  margin-top: 0px;
+  font-family: Vag;
+  text-align: center;
+  }
+
+  /* Style for the container of sections */
+  .sections-container {
+  clear: both; /* Clear floating elements */
+  }
+
+  .content {
+  display: flex;
+  align-items: flex-start; /* Aligns items at top of container */
+  }
+
+  /* Style for centering the second image*/
+  .centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+
+  /* Style for images */
+  .image img {
+  width: 100%;
+  height: 200px;
+  max-width: none; 
+  }
+
+  /* Style for larger image */
+  .large-image {
+  max-width: 600px; /* Set the maximum width of the container */
+  margin: 0 auto; /* Center the container horizontally */
+  margin-top: 2%;
+  }
+
+  /* Style for larger image */
+  .large-image img {
+  display: block; /* Ensure the image behaves as a block element */
+  width: 100%; /* Make the image fill the container */
+  height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Style for descriptions */
+  .description {
+  flex: 1;
+  min-width: 200px;
+  font-family: Vag;
+  }
+
+  .description p {
+  margin-bottom: 5px;
+  margin-left: 1%;
+  font-family: Vag;
+  text-align: left;
+  }
+
+  /* Style applied to all play types */
+  .play-types {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .play-type {
+      margin: 0.1%; /*spacing between words */
+  }
+
+  /* Define colors for each play type */
+  .play-type.physical {
+      color: rgb(250, 108, 165);
+  }
+
+  .play-type.socialEmotional {
+      color: rgb(240, 148, 62);
+  }
+
+  .play-type.sensory {
+      color: rgb(41, 172, 74);
+  }
+
+  .play-type.cognitive {
+      color: rgb(102, 208, 241);
+  }
+
+  .play-type.communication {
+      color: rgb(192, 106, 245);
+  }
+
+  /* Style for circles */
+  .circle {
+  position: fixed;
+  width: 250px;
+  height: 300px;
+  border-radius: 100%;
+  border: 2px solid white;
+  }
+
+  /* Left circle */
+  .left-circle1 {
+  left: -150px;
+  top: -150px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+  /* Right circle */
+  .right-circle1 {
+  right: -150px;
+  top: -150px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+  /* Left circle */
+  .left-circle2 {
+  left:-70px;
+  top: -155px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+  /* Right circle */
+  .right-circle2 {
+  right: -70px;
+  top: -155px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+  /* Left circle */
+  .left-circle3 {
+  left: -160px;
+  top: -50px;
+  z-index: -3;
+  background-color: #B6E565;
+  }
+
+  /* Right circle */
+  .right-circle3 {
+  right: -160px;
+  top: -50px;
+  z-index: -3;
+  background-color: #B6E565;
+  }
+
+  /* Style for the empty div at the bottom */
+  .empty-div {
+      height: 100px;
+  }
+
+  /* Style for about us at bottom of page */
+  aboutUs {
+  color: white; /* Text color */
+  text-align: center; /* Align text to center */
+  font-family: Vag;
+  }
+
+  /* Style for overall page */
+  html {
+  margin: 0;
+  padding: 0;
+  background-color: #7fc0f1; /* Set initial background color */
+  }
+</style>
+
+<script>
+  /* Code to animate circles to top of page */
+  document.addEventListener("DOMContentLoaded", function() {
+    // Function to create circles
+    function createCircle(className, delay) {
+      const circle = document.createElement("div");
+      circle.classList.add("circle", className);
+      document.body.appendChild(circle);
+      
+      // Set initial position off-screen
+      circle.style.transform = "translateY(100vh)";
+      
+      // Set initial opacity to 0
+      circle.style.opacity = 0;
+      
+      // Animate the circle with delay
+      const animation = circle.animate([
+        { opacity: 0, transform: "translateY(150vh)" },
+        { opacity: 1, transform: "translateY(0)" }
+      ], {
+        duration: 2500, // Adjust duration as needed
+        fill: "forwards", // Ensure the final position is maintained
+        delay: delay // Add delay
+      });
+      
+      // Add a class to fix the circle at the top after animation completes
+      animation.onfinish = () => circle.classList.add("fixed-top");
+    }
+      
+    // Create circles with different delays
+    createCircle("left-circle1", 0);
+    createCircle("right-circle1", 0);
+    createCircle("left-circle2", 1000);
+    createCircle("right-circle2",1000);
+    createCircle("left-circle3", 1750);
+    createCircle("right-circle3", 1750);
+    });
+</script>
+  
+<body>
+  <!-- code for title -->
+  <div class="welcome-title">
+    <h1>Welcome To</h1>
+  </div>
+  
+  <!-- code for big museum picture -->
+  <div class="image large-image">
+    <img src="https://assets.simpleviewinc.com/simpleview/image/fetch/q_75/https://assets.simpleviewinc.com/simpleview/image/upload/crm/tampabay/Exterior-3--15ede2385056a36_15f14d9c-5056-a36a-08544a40a6d2276e.jpg" alt="Who Are We Image">
+  </div>
+
+  <!-- continued code for title -->
+  <div class="welcome-title">
+    <h1>Glazer Children's Museum</h1>
+  </div>
+
+  <!-- code for first who are we section -->
+  <div class="sections-container">
+  <div class="section">
+    <h2>Who Are We?</h2>
+    <div class="content centered-content">
+      <div class="description">
+        <p>Glazer Children’s Museum is Tampa’s very own interactive, learning laboratory where children play, discover, and connect to the world around them to develop as lifelong learners and leaders. Here at Glazer Children’s Museum, we want to build a community that values <b>PLAY</b> as the foundation for the learning and development of children and families across generations!</p>
+        <p>We at Glazer Children’s Museum believe that play is for everyone. We are committed to providing a place where all families can come together to play, discover, and connect with the world around them. When people play together, they develop empathy, understand each other more, and build stronger bonds.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- code for child development section -->
+  <div class="section">
+    <h2>Why Is Child Development Important?</h2>
+    <div class="content centered-content">
+      <div class="image">
+        <img src="https://i.pinimg.com/736x/21/21/2f/21212fd23ad5891a86b6caa4c69fa945.jpg" alt="Whole Child Image">
+      </div>
+    </div>
+      <div class="description">
+        <p>There are 5 domains involved regarding children development...</p>
+        <div class="play-types">
+            <p class="play-type physical"><b>physical,</b></p>
+            <p class="play-type socialEmotional"><b>social emotional,</b></p>
+            <p class="play-type sensory"><b>sensory,</b></p>
+            <p class="play-type cognitive"><b>cognitive,</b></p>
+            <p class="play-type communication"><b>communication</b></p>
+        </div>
+        <p>The exhibits here at Glazier Children’s Museum are dedicated to focus and enhance these different domains!</p>
+        <p class="play-type physical"><b>1. Physical</b> - Developing motor skills helps children understand how their bodies interact with the world around them, fostering exploration and physical confidence.</p>
+        <p class="play-type socialEmotional"><b>2. Social/Emotional</b> - Supporting social and emotional development teaches children to recognize and manage their feelings, understand others' emotions, and build positive relationships, fostering empathy and cooperation.</p>
+        <p class="play-type sensory"><b>3. Sensory</b> - Sensory development is vital for children as it helps them explore and understand their surroundings, laying the groundwork for learning, communication, and cognitive growth.</p>
+        <p class="play-type cognitive"><b>4. Cognitive</b> - Cognition also involves the mental activities of understanding information and processes, organizing, remembering, and applying problem solving and generalization to situations.</p>
+        <p class="play-type communication"><b>5. Communication</b> - Communication skills are essential for children's ability to express themselves, understand others, and engage with the world around them, laying the groundwork for social interaction and learning.</p>
+      </div>
+  </div>
+
+  <!-- code for importance of child led play section -->
+  <div class="section">
+    <h2>Why Is Child Led Play Important?</h2>
+    <div class="content centered-content">
+      <div class="image">
+        <img src="https://scchildren.org/wp-content/uploads/Group-of-kids-playing-collage-02-800x0-c-default.jpg" alt="Who Are We Image">
+      </div>
+      <div class="description">
+        <p>When children are given the freedom to lead their play, they become more engaged, motivated, and invested in the activities they're involved in. This autonomy allows your child a sense of ownership and empowerment as they feel in control of their learning and exploration.</p>
+        <p>By letting children take the lead, they can follow their natural curiosity and interests, which enhances their overall learning experience. It encourages them to explore different ideas, experiment with various scenarios, and problem-solve independently. Child-led play also promotes creativity, critical thinking, and decision-making skills as children navigate through their play experiences.</p>
+        <p>This is why here at Glazer Children's Museum we encorage <b><i>child led play!</i></b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- code for admin to be able to add sections -->
+  <!-- Sections -->
+  {% for section in sections %}
+  <div class="section">
+  <h2>{{ section.title }}</h2>
+  <div class="content">
+      <div class="image">
+      <img src="{{ section.image.url }}" alt="{{ section.title }} Image">
+      </div>
+      <div class="description">
+      <p>{{ section.description }}</p>
+      </div>
+  </div>
+  </div>
+  {% endfor %}
+
+  <!-- code for bottom aboutUs -->
+  <aboutUs>
+    <p>Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861</p>
+  </aboutUs>
+
+  </div>
+
+<!-- Footer -->
+<footer>
+  <ul>
+    <div class="center-justified">
+      <div class="row">
+      <!-- Home Button -->
+        <li><a href="/"><div class="button-container"><button>
+            <img src="{% static 'images/home.svg' %}" alt="Home Button Icon">
+            <span>Home</span>
+        </button></div></a></li>
+
+      <!-- Exhibits Button -->
+        <li><a href="/exhibits/"><div class="button-container"><button>
+          <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
+            <span>Exhibits</span>
+        </button></div></a></li>
+
+        <!-- Science of Play Button -->
+        <li><a href="/science/"><div class="button-container"><button>
+            <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
+            <span>Science of Play</span>
+        </button></div></a></li>
+
+        <!-- Map Button -->
+        <li><a href="#"><div class="button-container"><button>
+            <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
+            <span>Map</span>
+        </button></div></a></li>
+
+        <!-- Outside Activities Button -->
+        <li><a href="/activites/"><div class="button-container"><button>
+            <img src="{% static 'images/playground.svg' %}" alt="Playground Button Icon">
+            <span>Outside Play</span>
+        </button></div></a></li>
+      </div>
+    </div>
+  </ul>
+</footer>
+
+<div class="empty-div"></div>
+
+</body>
+</html>
