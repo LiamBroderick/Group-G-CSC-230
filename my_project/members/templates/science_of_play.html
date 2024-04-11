@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang = "ENG">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science of Play - Museum Page</title>
+    <!-- Include Vue.js framework -->
+    <script> src="https://cdn.jsdelivr.net/npm/nue@2"</script>
+    <style>
+
+        /* Style for the buttons */
+    .button-container {
+        text-align: center;
+    }
+    .button-container button {
+        background-color: #874791;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70px; /* Fixed width for the button */
+        height: 60px; /* Fixed height for the button */
+        overflow: hidden; /* Hide overflow if text exceeds button height */
+    }
+    .button-container button img {
+        
+        width: 35px; /* Fixed width for the image */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .button-container button span {
+        font-size: 11px; /* Adjust font size as needed */
+        margin-top: 5px;
+    }
+
+  /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: none;
+      padding-right: none;
+      z-index: 2;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 11px; /* Font size for footer links */
+      font-family: Vag;
+    }
+    .center-justified {
+      margin: 0 auto;
+      width: auto;
+      max-width: 50em;
+      min-width: 0;
+    }
+    .row{
+      display: flex;
+      justify-content: space-between;
+    }
+
+        /* General adjustments for responsiveness */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Ensure elements are not wider than the screen */
+        img, iframe, .text-section {
+            max-width: 100%;
+            height: 100%;
+        }   
+
+
+        /* Style for centering the main title */
+        .main-title-container {
+            text-align: center;
+            margin: 0 auto;
+            width: 90%; /* Allows for some margin on the sides */
+        }
+        .main-title {
+            display: block; /*Changed from inline-block to block for better control */
+            width: auto; /*intended to be as wide as content*/
+            background-color: #904c9c;
+            color: white;
+            padding: 10px;
+            margin: 20px auto; /*Should center */
+            border-radius: 10px;
+            font-size: calc(12px + 2vmin); /*again, calc() function added for responsive font size */
+        }
+
+
+        /*Style for title section */
+        .title-section {
+            padding: 20px; /*Add padding */
+            border-radius: 10px; /*rounded corners */
+            margin: 15px 5%; /*5% added for responsiveness*/
+        }
+
+
+        /*Style for Main Text */
+        .text-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        /* Style for individual text item */
+        .text-item {
+            margin-bottom: 20px;
+        }
+
+        /* Style for circles */
+.circle {
+  position: fixed;
+  width: 300px;
+  height: 350px;
+  border-radius: 100%;
+  border: 2px solid white; /* Adjust the width as needed */
+  }
+
+/* Left circle */
+.left-circle1 {
+  left: -220px;
+  top: -200px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+/* Right circle */
+.right-circle1 {
+  right: -220px;
+  top: -200px;
+  z-index: -2;
+  background-color: #874791;
+  }
+
+/* Left circle */
+.left-circle2 {
+  left: -125px;
+  top: -220px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+/* Right circle */
+.right-circle2 {
+  right: -125px;
+  top: -220px;
+  z-index: -3;
+  background-color: #f86fac;
+  }
+
+/* Left circle */
+.left-circle3 {
+  left: -230px;
+  top: -90px;
+  z-index: -3;
+  background-color: #B6E565;
+  }
+
+/* Right circle */
+.right-circle3 {
+    right: -230px;
+    top: -90px;
+    z-index: -3;
+    background-color: #B6E565;
+    }
+  
+  /* Style for the empty div at the bottom */
+    .empty-div {
+        height: 150px;
+      }
+  <div class="empty-div"></div>
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div id="app">
+    <!-- Main Content -->
+    <main> 
+        <!-- PAGE TITLE -->
+        <section class="title-section">
+            <div class="main-title-container">
+                <h2 class="main-title"> <b>The Science of Play</b> </h2>
+            </div>
+        </section>
+        <!-- TITLE CAPTION -->
+        <section class = "text-section">
+            
+            <p><i>"Children need play now more than ever. It teaches them resilience, problem solving, risk taking, and empathy. As a vital part of this community, the Glazer Children's Museum is committed to serving the children of Tampa Bay and remains steadfast in our mission to provide a safe outlet for imagination and discovery. Join us as we embrace the power of play in the next decade and beyond."</i><b> - Sarah Cole, President & CEO</b></p>
+            <p>Here at the Glazer's Children's Museum, we create and foster engaging, impactful <i><b>PLAY</b></i> experiences for children and families to learn and thrive.</p>
+        </section>
+        <!-- EMBEDDED VIDEO / MEDIA -->
+        <section class = "text-section">
+            
+            <iframe width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/BBoMZ2ZeHjE" 
+            title="YouTube video player" 
+            frameborder="0" 
+            style="display: block; 
+            margin-left: auto;
+            margin-right: auto; "
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+            </iframe>
+          </section>
+          
+
+
+        <!--TYPES OF PLAY-->
+        <section class = "text-section">
+            <h2><i><b>What Are the Types of Play?</b></i></h2>
+            <p>"Play is often talked about as if it were a relief from serious learning. But for children, <b>play is serious learning.</b> Play is really the work of childhood." <i>- Fred Rogers (Mister Rogers)</i></p>
+            <p>There are many types of play offered at the GMC and beyond that your child can engage in, each with their own strenghts in teaching critical life skills. These types of play include:</p>
+            <ul>
+                <li>Symbolic/Imaginative</li>
+                <li>Rough and Tumble</li>
+                <li>Role Play</li>
+                <li>Communications</li>
+                <li>Locomotive</li>
+                <li>Mastery/Object/Replicative</li>
+            </ul>
+        </section>
+
+        <!-- PRINCIPLES OF PLAY -->
+        <section class="text-section">
+            <h2><b><i>The Principles of Play</i></b></h2>
+            <p>"Play is the <b>highest form of research</b>."<i> - Albert Einstein</i></p>
+            <p>In order to maximize the benefits your child gets from play, the GMC is specifically designed to encourage the following pillars of play:</p>
+            <ul>
+                <li>Freely Chosen</li>
+                <li>Intrinsically Motivated</li>
+                <li>Self Directed</li>
+                <li>Process over Product</li>
+                <li>Meaningful</li>
+                <li>Ongoing</li>
+                <li><b>Not Adult Led</b></li>
+            </ul>
+        </section>
+
+        <!-- WHAT DO WE LEARN FROM PLAY -->
+        <section class="text-section">
+            <h2><i><b>What Do We Learn from Play?</b></i></h2>
+            <p>"Children learn as they play. More importantly, in play, <b><i>children learn how to learn."</i></b> - O. Fred Donaldson</p>
+            <p>While playing at the GMC and beyond, Children learn a variety of essential life skills such as:</p>
+            <ul>
+                <li>Executive Function Skills (Focus, Adaptation, Moderation, Emotions)</li>
+                <li>Social Skills (Communication)</li>
+                <li>Problem Solving (Open Mindedness, Collaboration, Questioning)</li>
+                <li>Critical Thinking</li>
+                <li>Resilience</li>
+                <li>Self Regulation</li>
+                <li>21st Century Skills</li>
+                </ul>
+        </section>
+    </main>
+
+    <!-- Circles -->
+    <div class="circle left-circle1"></div>
+    <div class="circle right-circle1"></div>
+    <div class="circle left-circle2"></div>
+    <div class="circle right-circle2"></div>
+    <div class="circle left-circle3"></div>
+    <div class="circle right-circle3"></div>
+
+<!-- Footer -->
+<footer>
+    <ul>
+      <div class="center-justified">
+        <div class="row">
+        <!-- Home Button -->
+            <li><a href="{% url 'main' %}"><div class="button-container"><button>
+                <img src="{% static 'images/home.svg' %}" alt="Home Button Icon">
+                <span>Home</span>
+            </button></div></a></li>
+
+        <!-- Exhibits Button -->
+          <li><a href="{% url 'exhibits_page' %}"><div class="button-container"><button>
+            <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
+              <span>Exhibits</span>
+          </button></div></a></li>
+
+        <!-- Science of Play Button -->
+        <li><a href="{% url 'science_of_play' %}"><div class="button-container"><button>
+            <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
+            <span>Science of Play</span>
+        </button></div></a></li>
+
+
+        <!-- Map Button -->
+        <li><a href="{% url 'map' %}"><div class="button-container"><button>
+            <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
+            <span>Map</span>
+      </button></div></a></li>
+
+        </div>
+      </div>
+    </ul>
+  </footer>
+
+  <div class="empty-div"></div>
+
+</div>
+
+</script>
+
+
+</body>
+</html>
