@@ -36,59 +36,54 @@
         margin-top: 5px;
     }
 
-  /* Style for bottom navigation bar */
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: #874791; /* Purple background color */
-    color: white;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: none;
-    padding-right: none;
-    z-index: 2;
-  }
-
-  footer ul {
-    list-style-type: none;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  /* Style for footer links */
-  footer a {
-    color: white;
-    text-decoration: none;
-    font-size: 11px; /* Font size for footer links */
-    font-family: Vag;
-  }
-  .center-justified {
-    margin: 0 auto;
-    width: auto;
-    max-width: 50em;
-    min-width: 0;
-  }
-  .row{
-    display: flex;
-    justify-content: space-between;
-  }
-    /* Background color for the entire page */
-    body {
-      background-color: rgb(69, 192, 171); /* Light blue background color */
+    /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: none;
+      padding-right: none;
+      z-index: 2;
     }
-    
+
+    footer ul {
+      list-style-type: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 11px; /* Font size for footer links */
+      font-family: Vag;
+    }
+    .center-justified {
+      margin: 0 auto;
+      width: auto;
+      max-width: 50em;
+      min-width: 0;
+    }
+    .row{
+      display: flex;
+      justify-content: space-between;
+    }
+
     /* Style for title box */
     .title-box {
       background-color: #874791; /* Purple background color */
-      padding: 20px; /* Add padding to create space around the title */
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 0px;
-      height: fit-content;
-      width: 300px;
+      padding: 5px; /* Add padding to create space around the title */
+      margin-left: 32%;
+      margin-right: 32%;
+      margin-top: 30px;
+      height: 50px;
       z-index: 1; /* Increase z-index to ensure it's above other elements */
       border-radius: 30px; /* Round the corners */
       display: flex; /* Use flexbox */
@@ -111,6 +106,7 @@
     .image-container {
       position: relative;
       display: inline-block;
+      max-width: 100%;
     }
 
     /* Positioning for buttons within image containers */
@@ -140,6 +136,7 @@
       background-color: white;
       width: 500px;
       max-width: 80%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow */
     }
     .popup.active {
       transform: translate(-50%, -50%) scale(1);
@@ -154,7 +151,6 @@
       border-bottom: 1px solid black;
     }
 
-
     .popup-header .close-button {
       position: absolute;
       top: 10px;
@@ -163,9 +159,9 @@
     }
     .popup-body {
       padding: 10px 15px;
-
     }
-        /* Style for smiley and frowny faces */
+
+    /* Style for smiley and frowny faces */
     .rating-face {
       font-size: 30px;
       cursor: pointer;
@@ -174,11 +170,6 @@
       color:#874791
     }
 
-        /* Adjust main content position to avoid overlapping with main title */
-    main {
-      padding-top: 80px; /* Adjust as needed based on the height of main title */
-      padding-bottom: 60px;
-    }
     /* Overlay style */
     #overlay {
       position: fixed;
@@ -199,184 +190,233 @@
       
     }
 
-  /* Style for the empty div at the bottom */
+    /* Style for the empty div at the bottom */
     .empty-div {
-        height: 300px;
+        height: 70px;
       }
+
+    /* Style for centering the second image*/
+    .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+
+    /* Style for about us at bottom of page */
+    aboutUs {
+    color: white; /* Text color */
+    text-align: center; /* Align text to center */
+    font-family: Vag;
+    }
+
+    /* Style for admin link */
+    .admin-link {
+      color: white; /* Set font color to white */
+    }
+
+    /* Style for problem link */
+    .report-link {
+      color: Red; /* Set link color */
+    }
+
+    /* Style for overall page */
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: #7fc0f1; /* Set initial background color */
+    }
     </style>
-  
-
-  
 </head>
+
 <body>
-
-<div id="app">
-  <!-- Main Content -->
   <main>
-
-    <div class="title-box">
-        <div class="welcome-title">
-            <h1>Glazer Children's</h1> <h1> Museum</h1>
-        </div>
-      </div>
     <section class="map1-section">
-      
-      <!-- Image container with button -->
-      <div class="image-container">
-        <img src="{% static 'images/museum1.png' %}" width="900" height="500">
-        <button data-popup-target="#KidsPortPopup"id="KidsPort" class="overlay-button" style="bottom: 60px; right: 100px; width: 170px; height: 210px;"></button>
-        <div id="KidsPortPopup" class="popup">
-          <div class="KidsPort-header">
-            <button data-close-button class="close-button">&times;</button> <!-- Move close button here -->
-            <div class="KidsPort-title">How was your experience?</div>
-          </div>
-          <div class="KidsPort-body">
-            <span class="rating-face" @click="rate($event, 'KidsPort', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'KidsPort', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
+      <div class="title-box">
+        <div class="welcome-title">
+            <h1>Maps</h1>
         </div>
-        <button data-popup-target="#LightCloudPopup"id="LightCloudButton" class="overlay-button" style="top: 150px; right: 30px; width: 55px; height:60px;"></button>
-        <div id="LightCloudPopup" class="popup">
-          <div class="LightCloud-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="LightCloud-title">How was your experience?</div>
-          </div>
-          <div class="LightCloud-body">
-            <span class="rating-face" @click="rate($event, 'LightCloud', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'LightCloud', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#TugboatTotsPopup"id="TugboatTots" class="overlay-button" style="bottom: 40px; right: 300px; width: 70px; height:140px"></button>
-        <div id="TugboatTotsPopup" class="popup">
-          <div class="TugboatTots-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="TugboatTots-title">How was your experience?</div>
-          </div>
-          <div class="TugboatTots-body">
-            <span class="rating-face" @click="rate($event, 'TugboatTots', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'TugboatTots', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
       </div>
+
+      <div class="empty-div"></div>
+
+      <!-- Image container with button -->
+      <div class="content centered-content">
+        <div class="image-container">
+            <img src="{% static 'images/museum1.png' %}" width="900" height="500">
+            <button data-popup-target="#KidsPortPopup"id="KidsPort" class="overlay-button" style="bottom: 60px; right: 100px; width: 170px; height: 210px;"></button>
+            <div id="KidsPortPopup" class="popup">
+            <div class="KidsPort-header">
+                <button data-close-button class="close-button">&times;</button> <!-- Move close button here -->
+                <div class="KidsPort-title">How was your experience?</div>
+            </div>
+            <div class="KidsPort-body">
+                <span class="rating-face" @click="rate($event, 'KidsPort', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'KidsPort', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#LightCloudPopup"id="LightCloudButton" class="overlay-button" style="top: 150px; right: 30px; width: 55px; height:60px;"></button>
+            <div id="LightCloudPopup" class="popup">
+            <div class="LightCloud-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="LightCloud-title">How was your experience?</div>
+            </div>
+            <div class="LightCloud-body">
+                <span class="rating-face" @click="rate($event, 'LightCloud', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'LightCloud', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#TugboatTotsPopup"id="TugboatTots" class="overlay-button" style="bottom: 40px; right: 300px; width: 70px; height:140px"></button>
+            <div id="TugboatTotsPopup" class="popup">
+            <div class="TugboatTots-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="TugboatTots-title">How was your experience?</div>
+            </div>
+            <div class="TugboatTots-body">
+                <span class="rating-face" @click="rate($event, 'TugboatTots', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'TugboatTots', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+        </div>
+    </div>
     </section> 
+    <div class="empty-div"></div>
     <section class="map2-section">
       <div class="level2-title-container">
       </div>
       <!-- Image container with button -->
-      <div class="image-container">
-        <img src="{% static 'images/map2finished.png' %}" width="900" height="500">
-        <button data-popup-target="#FortsPopup"id="FortsButton" class="overlay-button" style="bottom: 170px; right: 90px; width: 110px; height: 60px;"></button>
-        <div id="FortsPopup" class="popup">
-          <div class="Forts-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="Forts-title">How was your experience?</div>
-          </div>
-          <div class="Forts-body">
-            <span class="rating-face" @click="rate($event, 'Forts', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'Forts', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
+      <div class="content centered-content">
+        <div class="image-container">
+            <img src="{% static 'images/map2finished.png' %}" width="900" height="500">
+            <button data-popup-target="#FortsPopup"id="FortsButton" class="overlay-button" style="bottom: 170px; right: 90px; width: 110px; height: 60px;"></button>
+            <div id="FortsPopup" class="popup">
+            <div class="Forts-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="Forts-title">How was your experience?</div>
+            </div>
+            <div class="Forts-body">
+                <span class="rating-face" @click="rate($event, 'Forts', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'Forts', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#WaterJourneyPopup"id="WaterJourneyButton" class="overlay-button" style="top: 120px; right: 110px; width: 90px; height: 90px;"></button>
+            <div id="WaterJourneyPopup" class="popup">
+            <div class="WaterJourney-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="WaterJourney-title">How was your experience?</div>
+            </div>
+            <div class="WaterJourney-body">
+                <span class="rating-face" @click="rate($event, 'WaterJourney', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'WaterJourney', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#OceanSandboxPopup"id="OceanSandboxButton" class="overlay-button" style="bottom: 150px; right: 210px; width: 70px; height: 85px;"></button>
+            <div id="OceanSandboxPopup" class="popup">
+            <div class="OceanSandbox-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="OceanSandbox-title">How was your experience?</div>
+            </div>
+            <div class="OceanSandbox-body">
+                <span class="rating-face" @click="rate($event, 'OceanSandbox', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'OceanSandbox', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#TheaterPopup"id="TheaterButton" class="overlay-button" style="bottom: 145px; right: 285px; width: 60px; height: 120px;"></button>
+            <div id="TheaterPopup" class="popup">
+            <div class="Theater-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="Theater-title">How was your Experience?</div>
+            </div>
+            <div class="Theater-body">
+                <span class="rating-face" @click="rate($event, 'Theater', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'Theater', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#EngineersWorkshopPopup"id="EngineersWorkshopButton" class="overlay-button" style="bottom: 145px; right: 350px; width: 140px; height: 120px;"></button>
+            <div id="EngineersWorkshopPopup" class="popup">
+            <div class="EngineersWorkshop-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="EngineersWorkshop-title">How was your experience?</div>
+            </div>
+            <div class="EngineersWorkshop-body">
+                <span class="rating-face" @click="rate($event, 'EngineersWorkshop', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'EngineersWorkshop', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#FarmPopup"id="FarmButton" class="overlay-button" style="bottom: 145px; left: 280px; width: 130px; height: 120px;"></button>
+            <div id="FarmPopup" class="popup">
+            <div class="Farm-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="Farm-title">How was your experience?</div>
+            </div>
+            <div class="Farm-body">
+                <span class="rating-face" @click="rate($event, 'Farm', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'Farm', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#ArtSmartPopup"id="ArtSmartButton" class="overlay-button" style="top: 90px; left: 170px; width: 110px; height: 70px;"></button>
+            <div id="ArtSmartPopup" class="popup">
+            <div class="ArtSmart-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="ArtSmart-title">How was your experience?</div>
+            </div>
+            <div class="ArtSmart-body">
+                <span class="rating-face" @click="rate($event, 'ArtSmart', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'ArtSmart', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
+            <button data-popup-target="#SafetyVillagePopup"id="SafetyVillageButton" class="overlay-button" style="top: 180px; left: 65px; width: 210px; height: 180px;"></button>
+            <div id="SafetyVillagePopup" class="popup">
+            <div class="SafetyVillage-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="SafetyVillage-title">How was your experience?</div>
+            </div>
+            <div class="SafetyVillage-body">
+                <span class="rating-face" @click="rate($event, 'SafetyVillage', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'SafetyVillage', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
         </div>
-        <button data-popup-target="#WaterJourneyPopup"id="WaterJourneyButton" class="overlay-button" style="top: 120px; right: 110px; width: 90px; height: 90px;"></button>
-        <div id="WaterJourneyPopup" class="popup">
-          <div class="WaterJourney-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="WaterJourney-title">How was your experience?</div>
-          </div>
-          <div class="WaterJourney-body">
-            <span class="rating-face" @click="rate($event, 'WaterJourney', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'WaterJourney', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#OceanSandboxPopup"id="OceanSandboxButton" class="overlay-button" style="bottom: 150px; right: 210px; width: 70px; height: 85px;"></button>
-        <div id="OceanSandboxPopup" class="popup">
-          <div class="OceanSandbox-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="OceanSandbox-title">How was your experience?</div>
-          </div>
-          <div class="OceanSandbox-body">
-            <span class="rating-face" @click="rate($event, 'OceanSandbox', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'OceanSandbox', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#TheaterPopup"id="TheaterButton" class="overlay-button" style="bottom: 145px; right: 285px; width: 60px; height: 120px;"></button>
-        <div id="TheaterPopup" class="popup">
-          <div class="Theater-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="Theater-title">How was your Experience?</div>
-          </div>
-          <div class="Theater-body">
-            <span class="rating-face" @click="rate($event, 'Theater', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'Theater', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#EngineersWorkshopPopup"id="EngineersWorkshopButton" class="overlay-button" style="bottom: 145px; right: 350px; width: 140px; height: 120px;"></button>
-        <div id="EngineersWorkshopPopup" class="popup">
-          <div class="EngineersWorkshop-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="EngineersWorkshop-title">How was your experience?</div>
-          </div>
-          <div class="EngineersWorkshop-body">
-            <span class="rating-face" @click="rate($event, 'EngineersWorkshop', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'EngineersWorkshop', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#FarmPopup"id="FarmButton" class="overlay-button" style="bottom: 145px; left: 280px; width: 130px; height: 120px;"></button>
-        <div id="FarmPopup" class="popup">
-          <div class="Farm-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="Farm-title">How was your experience?</div>
-          </div>
-          <div class="Farm-body">
-            <span class="rating-face" @click="rate($event, 'Farm', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'Farm', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#ArtSmartPopup"id="ArtSmartButton" class="overlay-button" style="top: 90px; left: 170px; width: 110px; height: 70px;"></button>
-        <div id="ArtSmartPopup" class="popup">
-          <div class="ArtSmart-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="ArtSmart-title">How was your experience?</div>
-          </div>
-          <div class="ArtSmart-body">
-            <span class="rating-face" @click="rate($event, 'ArtSmart', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'ArtSmart', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-        <button data-popup-target="#SafetyVillagePopup"id="SafetyVillageButton" class="overlay-button" style="top: 180px; left: 65px; width: 210px; height: 180px;"></button>
-        <div id="SafetyVillagePopup" class="popup">
-          <div class="SafetyVillage-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="SafetyVillage-title">How was your experience?</div>
-          </div>
-          <div class="SafetyVillage-body">
-            <span class="rating-face" @click="rate($event, 'SafetyVillage', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'SafetyVillage', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
-        </div>
-      </div>
+    </div>
     </section>
+    <div class="empty-div"></div>
     <section class="map3-section">
       <div class="level3-title-container">
       </div>
       <!-- Image container with button -->
-      <div class="image-container">
-        <img src="{% static 'images/map3finished.png' %}" width="900" height="500">
-        <button data-popup-target="#BigJohnPopup"id="BigJohnButton" class="overlay-button" style="bottom: 10%; left: 18.5%; width: 310px; height: 150px;"></button>
-        <div id="BigJohnPopup" class="popup">
-          <div class="BigJohn-header">
-            <button data-close-button class="close-button">&times;</button>
-            <div class="BigJohn-title">How was your experience?</div>
-          </div>
-          <div class="BigJohn-body">
-            <span class="rating-face" @click="rate($event, 'BigJohn', 1)">&#9785;</span> <!-- Frowny face -->
-            <span class="rating-face" @click="rate($event, 'BigJohn', 3)">&#9786;</span> <!-- Smiley face -->
-          </div>
+      <div class="content centered-content">
+        <div class="image-container">
+            <img src="{% static 'images/map3finished.png' %}" width="900" height="500">
+            <button data-popup-target="#BigJohnPopup"id="BigJohnButton" class="overlay-button" style="bottom: 10%; left: 18.5%; width: 310px; height: 150px;"></button>
+            <div id="BigJohnPopup" class="popup">
+            <div class="BigJohn-header">
+                <button data-close-button class="close-button">&times;</button>
+                <div class="BigJohn-title">How was your experience?</div>
+            </div>
+            <div class="BigJohn-body">
+                <span class="rating-face" @click="rate($event, 'BigJohn', 1)">&#9785;</span> <!-- Frowny face -->
+                <span class="rating-face" @click="rate($event, 'BigJohn', 3)">&#9786;</span> <!-- Smiley face -->
+            </div>
+            </div>
         </div>
-      </div>
+    </div>
     </section>
+
+    <div class="empty-div"></div>
+
+  <!-- code for bottom aboutUs -->
+  <aboutUs>
+    <p>
+        Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861 |
+        <a href="/admin/" class="admin-link">Admin</a> |
+        <a href="https://forms.gle/PM4ooKzHEkmc4Fg47" class="report-link">Report A Problem</a>
+    </p>
+</aboutUs>
+
+<div class="empty-div"></div>
+  
   </main>
 
-<!-- Footer -->
-<footer>
+  <footer>
     <ul>
       <div class="center-justified">
         <div class="row">
@@ -387,23 +427,28 @@
             </button></div></a></li>
 
         <!-- Exhibits Button -->
-          <li><a href="{% url 'exhibits_page' %}"><div class="button-container"><button>
+          <li><a href="{% url 'exhibits' %}"><div class="button-container"><button>
             <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
               <span>Exhibits</span>
           </button></div></a></li>
 
         <!-- Science of Play Button -->
-        <li><a href="{% url 'science_of_play' %}"><div class="button-container"><button>
+        <li><a href="{% url 'science' %}"><div class="button-container"><button>
             <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
             <span>Science of Play</span>
         </button></div></a></li>
 
-
         <!-- Map Button -->
-        <li><a href="{% url 'map' %}"><div class="button-container"><button>
+        <li><a href="{% url 'maps' %}"><div class="button-container"><button>
             <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
             <span>Map</span>
-      </button></div></a></li>
+        </button></div></a></li>
+
+        <!-- Outside Activities Button -->
+        <li><a href="{% url 'activities' %}"><div class="button-container"><button>
+            <img src="{% static 'images/playground.svg' %}" alt="Playground Button Icon">
+            <span>Outside Play</span>
+        </button></div></a></li>
 
         </div>
       </div>
@@ -411,8 +456,6 @@
   </footer>
 
   <div class="empty-div"></div>
-
-</div>
 
 <script>
   new Vue({
@@ -473,13 +516,5 @@
   }
   </script>
 
-
-<script>
-new Vue({
-  el: '#app',
-  }
-);
-</script>
-<div class="empty-div"></div>
 </body>
 </html>

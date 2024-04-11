@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Museum Page</title>
-  <!-- Include Vue.js framework -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   
   <style>
     /* Style for the buttons */
@@ -152,28 +150,28 @@
     }
 
     /* Classes involved with changing background color on scroll */
-      .green-background {
+    .green-background {
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #7fc0f1, #B6E565); /* Blue to green gradient */
     }
 
-      /* Change background color to yellow on scroll */
-      .yellow-background {
+    /* Change background color to yellow on scroll */
+    .yellow-background {
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #B6E565, #f6f18f ); /* Pink background color */
     }
 
-        /* Change background color to orange on scroll */
-      .orange-background {
+    /* Change background color to orange on scroll */
+    .orange-background {
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #f6f18f, #f9c04e ); /* Pink background color */
     }
 
-      /* Change background color to pink on scroll */
-      .pink-background {
+    /* Change background color to pink on scroll */
+    .pink-background {
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #f9c04e, #f691b2 ); /* Pink background color */
@@ -186,7 +184,7 @@
       height: 350px;
       border-radius: 100%;
       border: 2px solid white; /* Adjust the width as needed */
-      }
+    }
 
     /* Left circle */
     .left-circle1 {
@@ -194,7 +192,7 @@
       top: -200px;
       z-index: -2;
       background-color: #874791;
-      }
+    }
 
     /* Right circle */
     .right-circle1 {
@@ -202,7 +200,7 @@
       top: -200px;
       z-index: -2;
       background-color: #874791;
-      }
+    }
 
     /* Left circle */
     .left-circle2 {
@@ -210,7 +208,7 @@
       top: -220px;
       z-index: -3;
       background-color: #f86fac;
-      }
+    }
 
     /* Right circle */
     .right-circle2 {
@@ -218,7 +216,7 @@
       top: -220px;
       z-index: -3;
       background-color: #f86fac;
-      }
+    }
 
     /* Left circle */
     .left-circle3 {
@@ -226,7 +224,7 @@
       top: -90px;
       z-index: -3;
       background-color: #B6E565;
-      }
+    }
 
     /* Right circle */
     .right-circle3 {
@@ -234,7 +232,7 @@
         top: -90px;
         z-index: -3;
         background-color: #B6E565;
-        }
+    }
 
     /* Style applied to all play types */
     .play-types {
@@ -279,12 +277,23 @@
       font-family: Vag;
       }
 
+    /* Style for admin link */
+    .admin-link {
+      color: white; /* Set font color to white */
+    }
+
+    /* Style for problem link */
+    .report-link {
+      color: Red; /* Set link color */
+    }
+
     /* Style for overall page */
     html {
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #7fc0f1, #B6E565 )
       }
+
   </style>
 </head>
 
@@ -384,31 +393,31 @@
     <div class="center-justified">
       <div class="row">
       <!-- Home Button -->
-          <li><a href="/"><div class="button-container"><button>
+          <li><a href="{% url 'main' %}"><div class="button-container"><button>
               <img src="{% static 'images/home.svg' %}" alt="Home Button Icon">
               <span>Home</span>
           </button></div></a></li>
 
       <!-- Exhibits Button -->
-        <li><a href="/exhibits/"><div class="button-container"><button>
+        <li><a href="{% url 'exhibits' %}"><div class="button-container"><button>
           <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
             <span>Exhibits</span>
         </button></div></a></li>
 
       <!-- Science of Play Button -->
-      <li><a href="/science/"><div class="button-container"><button>
+      <li><a href="{% url 'science' %}"><div class="button-container"><button>
           <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
           <span>Science of Play</span>
       </button></div></a></li>
 
       <!-- Map Button -->
-      <li><a href="#"><div class="button-container"><button>
+      <li><a href="{% url 'maps' %}"><div class="button-container"><button>
           <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
           <span>Map</span>
       </button></div></a></li>
 
       <!-- Outside Activities Button -->
-      <li><a href="/activites/"><div class="button-container"><button>
+      <li><a href="{% url 'activities' %}"><div class="button-container"><button>
           <img src="{% static 'images/playground.svg' %}" alt="Playground Button Icon">
           <span>Outside Play</span>
       </button></div></a></li>
@@ -420,9 +429,13 @@
 
 <div class="empty-div"></div>
 
-<!-- about us section -->
+<!-- code for bottom aboutUs -->
 <aboutUs>
-  <p>Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861</p>
+  <p>
+      Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861 |
+      <a href="/admin/" class="admin-link">Admin</a> |
+      <a href="https://forms.gle/PM4ooKzHEkmc4Fg47" class="report-link">Report A Problem</a>
+  </p>
 </aboutUs>
 
 <div class="empty-div"></div>

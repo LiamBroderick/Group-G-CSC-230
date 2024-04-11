@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science of Play - Museum Page</title>
-    <!-- Include Vue.js framework -->
-    <script> src="https://cdn.jsdelivr.net/npm/nue@2"</script>
+]
     <style>
         /* Style for the buttons */
         .button-container {
@@ -101,12 +100,12 @@
             text-align: center;
             margin: 0 auto;
             width: 90%; /* Allows for some margin on the sides */
+            max-width: 800px; /* Set maximum width */
         }
         .main-title {
             background-color: #874791; /* Purple background color */
             padding: 5px; /* Add padding to create space around the title */
-            margin-left: 29%;
-            margin-right: 29%;
+            justify-content: center; /* Center items horizontally */
             margin-top: 30px;
             height: 50px;
             z-index: 1; /* Increase z-index to ensure it's above other elements */
@@ -222,6 +221,17 @@
             font-family: Vag;
         }
 
+        /* Style for admin link */
+        .admin-link {
+          color: white; /* Set font color to white */
+        }
+
+        /* Style for problem link */
+        .report-link {
+          color: Red; /* Set link color */
+        }
+
+        /* Style for overall page */
         html {
             margin: 0;
             padding: 0;
@@ -340,31 +350,31 @@
       <div class="center-justified">
         <div class="row">
         <!-- Home Button -->
-            <li><a href="/"><div class="button-container"><button>
+            <li><a href="{% url 'main' %}"><div class="button-container"><button>
                 <img src="{% static 'images/home.svg' %}" alt="Home Button Icon">
                 <span>Home</span>
             </button></div></a></li>
 
         <!-- Exhibits Button -->
-          <li><a href="/exhibits/"><div class="button-container"><button>
+          <li><a href="{% url 'exhibits' %}"><div class="button-container"><button>
             <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
               <span>Exhibits</span>
           </button></div></a></li>
 
         <!-- Science of Play Button -->
-        <li><a href="/science/"><div class="button-container"><button>
+        <li><a href="{% url 'science' %}"><div class="button-container"><button>
             <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
             <span>Science of Play</span>
         </button></div></a></li>
 
         <!-- Map Button -->
-        <li><a href="#"><div class="button-container"><button>
+        <li><a href="{% url 'maps' %}"><div class="button-container"><button>
             <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
             <span>Map</span>
         </button></div></a></li>
 
         <!-- Outside Activities Button -->
-        <li><a href="/activites/"><div class="button-container"><button>
+        <li><a href="{% url 'activities' %}"><div class="button-container"><button>
             <img src="{% static 'images/playground.svg' %}" alt="Playground Button Icon">
             <span>Outside Play</span>
         </button></div></a></li>
@@ -376,9 +386,14 @@
 
   <div class="empty-div"></div>
 
+  <!-- code for bottom aboutUs -->
   <aboutUs>
-    <p>Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861</p>
-  </aboutUs>
+    <p>
+        Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861 |
+        <a href="/admin/" class="admin-link">Admin</a> |
+        <a href="https://forms.gle/PM4ooKzHEkmc4Fg47" class="report-link">Report A Problem</a>
+    </p>
+</aboutUs>
 
   <div class="empty-div"></div>
 
