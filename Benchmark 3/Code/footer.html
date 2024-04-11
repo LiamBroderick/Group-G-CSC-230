@@ -3,48 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <!-- Include Vue.js framework -->
+   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <style>
 
     /* Style for the empty div at the bottom */
-    /* Creates extra space to scroll so footer doesn't block bottom of page */
     .empty-div {
-        height: 150px;
-      }
-    
-    /* ------------------ Buttons ------------------ */
-    /* Style for buttons on navigation bar */
+      height: 150px;
+    }
+
+    /* Style for the buttons */
     .button-container {
-        text-align: center;
-     }
-    
+      text-align: center;
+    }
     .button-container button {
-        background-color: #874791;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 70px; /* Fixed width for the button */
-        height: 70px; /* Fixed height for the button */
-        overflow: hidden; /* Hide overflow if text exceeds button height */
+      background-color: #874791;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 60px; /* Fixed width for the button */
+      height: 60px; /* Fixed height for the button */
     }
-    
     .button-container button img {
-        width: 35px; /* Fixed width for the image */
-        height: auto; /* Maintain aspect ratio */
+      width: 35px; /* Fixed width for the image */
+      height: auto; /* Maintain aspect ratio */
     }
-    
     .button-container button span {
-        font-size: 11px; /* Adjust font size as needed */
-        margin-top: 5px;
+      font-size: 11px; /* Adjust font size as needed */
+      margin-top: 5px;
     }
-    
-  /* ------------------ Footer ------------------ */
-  /* Style for bottom navigation bar */
+
+    /* Style for bottom navigation bar */
     footer {
       position: fixed;
       bottom: 0;
@@ -59,8 +54,7 @@
       padding-right: none;
       z-index: 2;
     }
-  
-    /* Where items in footer are placed into */
+
     footer ul {
       list-style-type: none;
       padding-left: 15px;
@@ -74,23 +68,19 @@
       font-size: 11px; /* Font size for footer links */
       font-family: Vag;
     }
-
-    /* Used with .row to evenly spaces list of items */
     .center-justified {
       margin: 0 auto;
       width: auto;
-      max-width: 50em; /* Set a max width between each item */
-      min-width: 0; /* Set a min width between each item */
+      max-width: 50em;
+      min-width: 0;
     }
-
-    /* Place items into one row, mutlitple rows stack */
     .row{
       display: flex;
       justify-content: space-between;
     }
+
     </style>
 </head>
-  
 <body>
 
   <!-- Footer -->
@@ -105,10 +95,10 @@
             </button></div></a></li>
 
         <!-- Exhibits Button -->
-        <li><a href="#"><div class="button-container"><button>
-            <img src="images/icons/exhibits.svg" alt="Exhibits Button Icon">
-            <span>Exhibits</span>
-        </button></div></a></li>
+          <li><a href="#"><div class="button-container"><button>
+              <img src="images/icons/exhibits.svg" alt="Exhibits Button Icon">
+              <span>Exhibits</span>
+          </button></div></a></li>
 
         <!-- Science of Play Button -->
         <li><a href="#"><div class="button-container"><button>
@@ -118,8 +108,8 @@
         
         <!-- Map Button -->
         <li><a href="#"><div class="button-container"><button>
-            <img src="images/icons/map.svg" alt="Map Button Icon">
-            <span>Map</span>
+          <img src="images/icons/map.svg" alt="Map Button Icon">
+          <span>Map</span>
         </button></div></a></li>
 
         <!-- Outside Play Button -->
