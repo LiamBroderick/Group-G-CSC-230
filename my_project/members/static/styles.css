@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'Vag'; /* Name of your font */
-  src: url('../fonts/vag.ttf') format('truetype'), /* Path to your font file */
-}
-
-body {
-  font-family: 'Vag', sans-serif; /* Apply your font to the body or any other desired elements */
-}
