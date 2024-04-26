@@ -1,0 +1,512 @@
+{% load static %}
+<!DOCTYPE html>
+<link href="https://fonts.cdnfonts.com/css/vag-primer" rel="stylesheet">
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9824J05RV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y9824J05RV');
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NP6KM8MQ');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibit Page</title>
+  
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/vag-primer');
+    /* Style for the buttons */
+    .button-container {
+        text-align: center;
+    }
+    .button-container button {
+        background-color: #874791;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60px; /* Fixed width for the button */
+        height: 60px; /* Fixed height for the button */
+    }
+    .button-container button img {
+        width: 35px; /* Fixed width for the image */
+        height: auto; /* Maintain aspect ratio */
+    }
+    .button-container button span {
+        font-size: 11px; /* Adjust font size as needed */
+        margin-top: 5px;
+    }
+
+    /* Style for bottom navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #874791; /* Purple background color */
+      color: white;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: none;
+      padding-right: none;
+      z-index: 2;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    /* Style for footer links */
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-size: 11px; /* Font size for footer links */
+      font-family: 'VAG Primer', sans-serif;
+    }
+    .center-justified {
+      margin: 0 auto;
+      width: auto;
+      max-width: 50em;
+      min-width: 0;
+    }
+    .row{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Style for title box */
+    .title-box {
+      background-color: #874791; /* Purple background color */
+      padding: 5px; /* Add padding to create space around the title */
+      margin-left: 29%;
+      margin-right: 29%;
+      margin-top: 30px;
+      height: 50px;
+      z-index: 1; /* Increase z-index to ensure it's above other elements */
+      border-radius: 30px; /* Round the corners */
+      display: flex; /* Use flexbox */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+      border: 2px solid white; /* Adjust the width as needed */
+    }
+    
+    /* Style for Glazier Children's Museum  title */
+    .title-box .welcome-title h1 {
+    margin: 0; /* Remove all margins */
+    text-align: center;
+    font-size: 36px; /* Adjust the font size as needed */
+    font-family: 'VAG Primer', sans-serif;
+    color: white; /* Set color to white */
+    }
+
+    /* Style for white sections */
+    .section {
+      background-color: white; /* White background color */
+      margin-top: 30px; /* Add some margin */
+      margin-left: 5%;
+      margin-right: 5%;
+      padding: 20px; /* Add padding */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Add shadow */
+    }
+
+    /* Style for section titles */
+    .section h2 {
+      color: #874791; /* Purple color for section titles */
+      font-size: 26px; /* Adjust font size */
+      margin-bottom: 25px; /* Add margin */
+      margin-top: 0px;
+      font-family: 'VAG Primer', sans-serif;
+    }
+
+    .content {
+    display: flex;
+    align-items: flex-start; /* Align items at the start (top) of the container */
+    }
+
+    /* Style for images */
+    .image {
+    margin-right: 20px;
+    }
+
+    .image img {
+      aspect-ratio: 300/200;
+      max-width: 100%;
+      width: 400px;
+      height: auto;
+      object-fit: cover; /* For info about image cropping - https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit */
+      }
+
+    /* Style for descriptions */
+    .description {
+    flex: 1;
+    min-width: 200px;
+    font-family: 'VAG Primer', sans-serif;
+    }
+
+    .description p {
+    margin-bottom: 10px;
+    font-family: 'VAG Primer', sans-serif;
+    font-size: 15px;
+    }
+
+    /* Classes involved with changing background color on scroll */
+    .green-background {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #7fc0f1, #B6E565); /* Blue to green gradient */
+    }
+
+    /* Change background color to yellow on scroll */
+    .yellow-background {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #B6E565, #f6f18f ); /* Pink background color */
+    }
+
+    /* Change background color to orange on scroll */
+    .orange-background {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f6f18f, #f9c04e ); /* Pink background color */
+    }
+
+    /* Change background color to pink on scroll */
+    .pink-background {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f9c04e, #f691b2 ); /* Pink background color */
+    }
+
+    /* Style for circles */
+    .circle {
+      position: fixed;
+      width: 300px;
+      height: 350px;
+      border-radius: 100%;
+      border: 2px solid white; /* Adjust the width as needed */
+    }
+
+    /* Left circle */
+    .left-circle1 {
+      left: -220px;
+      top: -200px;
+      z-index: -2;
+      background-color: #874791;
+    }
+
+    /* Right circle */
+    .right-circle1 {
+      right: -220px;
+      top: -200px;
+      z-index: -2;
+      background-color: #874791;
+    }
+
+    /* Left circle */
+    .left-circle2 {
+      left: -125px;
+      top: -220px;
+      z-index: -3;
+      background-color: #f86fac;
+    }
+
+    /* Right circle */
+    .right-circle2 {
+      right: -125px;
+      top: -220px;
+      z-index: -3;
+      background-color: #f86fac;
+    }
+
+    /* Left circle */
+    .left-circle3 {
+      left: -230px;
+      top: -90px;
+      z-index: -3;
+      background-color: #B6E565;
+    }
+
+    /* Right circle */
+    .right-circle3 {
+        right: -230px;
+        top: -90px;
+        z-index: -3;
+        background-color: #B6E565;
+    }
+
+    /* Style applied to all play types */
+    .play-types {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .play-type {
+      margin: 0.2%; /*spacing between words */
+    }
+  
+    /* Style for play type buttons */
+    .playtypeButton {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'VAG Primer', sans-serif;
+    }
+    
+    /* Style for physical play button */
+    .playtypePhysical {
+      background-color: rgb(250, 108, 165);
+      color: white;
+    }
+    
+    /* Style for social-emotional play button */
+    .playtypeSocialEmotional {
+      background-color: rgb(240, 148, 62);
+      color: white;
+    }
+    
+    /* Style for sensory play button */
+    .playtypeSensory {
+      background-color: rgb(41, 172, 74);
+      color: white;
+    }
+    
+    /* Style for cognitive play button */
+    .playtypeCognitive {
+      background-color: rgb(102, 208, 241);
+      color: white;
+    }
+    
+    /* Style for communication play button */
+    .playtypeCommunication {
+      background-color: rgb(192, 106, 245);
+      color: white;
+    }
+
+    /* Add a style for the pressed button state */
+    .pressed {
+        background-color: #595959; /* Change this to the color you want for the pressed state */
+    }
+
+    /* Style for the empty div at the bottom */
+    .empty-div {
+        height: 50px;
+    }
+
+    /* Style for about us at bottom of page */
+    aboutUs {
+      color: white; /* Text color */
+      text-align: center; /* Align text to center */
+      font-family: 'VAG Primer', sans-serif;
+      }
+
+    /* Style for admin link */
+    .admin-link {
+      color: white; /* Set font color to white */
+    }
+
+    /* Style for problem link */
+    .report-link {
+      color: Red; /* Set link color */
+    }
+
+    /* Style for overall page */
+    html {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #7fc0f1, #B6E565 )
+      }
+
+  </style>
+</head>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Get all buttons
+    var buttons = document.querySelectorAll('.playtypeButton');
+
+    // Add event listener to each button
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Toggle the "pressed" class for the clicked button
+        this.classList.toggle('pressed');
+      });
+    });
+  });
+
+  /* Code to have page change colors while scrolling */
+  // Add scroll event listener to change background color
+  window.addEventListener('scroll', function() {
+    const htmlElement = document.documentElement;
+      if (window.scrollY > 1200 && window.scrollY < 2200) {
+          htmlElement.classList.add('yellow-background'); // Add class to change background color to yellow
+          htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+      } else if (window.scrollY > 2200 && window.scrollY < 3200) {
+          htmlElement.classList.add('orange-background'); // Add class to change background color to orange
+          htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+      } else if (window.scrollY > 3200) {
+          htmlElement.classList.add('pink-background'); // Add class to change background color to pink
+          htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+          htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+      } else {
+      htmlElement.classList.remove('pink-background'); // Remove class to revert back to initial background color
+      htmlElement.classList.remove('green-background'); // Remove class to revert back to initial background color
+      htmlElement.classList.remove('yellow-background'); // Remove class to revert back to initial background color
+      htmlElement.classList.remove('orange-background'); // Remove class to revert back to initial background color
+      }
+  });
+</script>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP6KM8MQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<!-- Title -->
+  <div class="title-box">
+    <div class="welcome-title">
+        <h1>Exhibits</h1>
+    </div>
+  </div>
+
+<!-- Exhibits -->
+{% for exhibit in exhibits %}
+<div class="section">
+  <h2>{{ exhibit.title }}</h2>
+  <div class="content">
+    <div class="image">
+      <img src="{{ exhibit.image.url }}" alt="{{ exhibit.title }} Image">
+    </div>
+    <div class="description">
+      {% if exhibit.description %}
+      <p>{{ exhibit.description }}</p>
+      {% endif %}
+      <div class="empty-div"></div>
+      <p><b>What types of play did you see your child doing?</b></p>
+      <div class="play-types">
+        <div class="play-type">
+          {% if exhibit.playtypePhysical %}
+          <button class="playtypeButton playtypePhysical">Physical</button>
+          {% endif %}
+        </div>
+        <div class="play-type">
+          {% if exhibit.playtypeSocialEmotional %}
+          <button class="playtypeButton playtypeSocialEmotional">Social/Emotional</button>
+          {% endif %}
+        </div>
+        <div class="play-type">
+          {% if exhibit.playtypeSensory %}
+          <button class="playtypeButton playtypeSensory">Sensory</button>
+          {% endif %}
+        </div>
+        <div class="play-type">
+          {% if exhibit.playtypeCognitive %}
+          <button class="playtypeButton playtypeCognitive">Cognitive</button>
+          {% endif %}
+        </div>
+        <div class="play-type">
+          {% if exhibit.playtypeCommunication %}
+          <button class="playtypeButton playtypeCommunication">Communication</button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- Circles -->
+<div class="circle left-circle1"></div>
+<div class="circle right-circle1"></div>
+<div class="circle left-circle2"></div>
+<div class="circle right-circle2"></div>
+<div class="circle left-circle3"></div>
+<div class="circle right-circle3"></div>
+
+<!-- Footer -->
+<footer>
+  <ul>
+    <div class="center-justified">
+      <div class="row">
+      <!-- Home Button -->
+          <li><a href="{% url 'main' %}"><div class="button-container"><button>
+              <img src="{% static 'images/home.svg' %}" alt="Home Button Icon">
+              <span>Home</span>
+          </button></div></a></li>
+
+      <!-- Exhibits Button -->
+        <li><a href="{% url 'exhibits_page' %}"><div class="button-container"><button>
+          <img src="{% static 'images/exhibits.svg' %}" alt="Exhibit Button Icon">
+            <span>Exhibits</span>
+        </button></div></a></li>
+
+      <!-- Science of Play Button -->
+      <li><a href="{% url 'science_of_play' %}"><div class="button-container"><button>
+          <img src="{% static 'images/science.svg' %}" alt="Science Button Icon">
+          <span>Science of Play</span>
+      </button></div></a></li>
+
+      <!-- Map Button -->
+      <li><a href="{% url 'map' %}"><div class="button-container"><button>
+          <img src="{% static 'images/map.svg' %}" alt="Map Button Icon">
+          <span>Map</span>
+      </button></div></a></li>
+
+      <!-- Outside Activities Button -->
+      <li><a href="{% url 'activities' %}"><div class="button-container"><button>
+          <img src="{% static 'images/playground.svg' %}" alt="Playground Button Icon">
+          <span>Outside Play</span>
+      </button></div></a></li>
+
+      </div>
+    </div>
+  </ul>
+</footer>
+
+<div class="empty-div"></div>
+
+<!-- code for bottom aboutUs -->
+<aboutUs>
+  <p>
+      Glazer Children’s Museum | 110 W Gasparilla Plaza, Tampa FL 33602 | 813 443 3861 |
+      <a href="/admin/" class="admin-link">Admin</a> |
+      <a href="https://forms.gle/PM4ooKzHEkmc4Fg47" class="report-link">Report A Problem</a>
+  </p>
+</aboutUs>
+
+<div class="empty-div"></div>
+<div class="empty-div"></div>
+
+</body>
+</html>
